@@ -1,13 +1,19 @@
 from selenium import webdriver
 from time import sleep
+from selenium.webdriver.chrome.options import Options
 extension_path="./bilibili-helper-2.1.7.crx"
-chrome_options = webdriver.ChromeOptions()
+chrome_options = Options()
 chrome_options.add_extension(extension_path)
 chrome_options.add_argument(r'user-data-dir=C:\Users\Administrator\AppData\Local\Google\Chrome\User Data')
 chrome_options.add_experimental_option('useAutomationExtension', False)
 # 禁止下载弹窗
 
-prefs = {'profile.default_content_settings.popups': 0, 'download.default_directory': 'D:\\'}
+prefs = {'profile.default_content_settings.popups': 0,
+        'download.prompt_for_download': False,
+         'download.default_directory': 'D:\\',
+         "safebrowsing_for_trusted_sources_enabled": False,
+        "safebrowsing.enabled": False
+         }
 chrome_options.add_experimental_option('prefs', prefs)
 # 实例化一款浏览器
 bor = webdriver.Chrome(executable_path='chromedriver.exe', options=chrome_options)
