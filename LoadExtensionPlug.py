@@ -4,8 +4,6 @@ from time import sleep
 from selenium.webdriver.chrome.options import Options
 import json
 import requests
-from selenium.webdriver.support.wait import WebDriverWait
-
 extension_path="./bilibili-helper-2.1.7.crx"
 chrome_options = Options()
 chrome_options.add_extension(extension_path)
