@@ -1,3 +1,4 @@
+import os
 from selenium import webdriver
 from time import sleep
 from selenium.webdriver.chrome.options import Options
@@ -11,12 +12,14 @@ chrome_options.add_extension(extension_path)
 chrome_options.add_argument(r'user-data-dir=C:\Users\Administrator\AppData\Local\Google\Chrome\User Data')
 chrome_options.add_experimental_option('useAutomationExtension', False)
 # 禁止下载弹窗
-
+path = 'D:\\myVideo\\'
+if not os.path.exists(path):
+    os.makedirs(path)
 prefs = {'profile.default_content_settings.popups': 0,
         'download.prompt_for_download': False,
-         'download.default_directory': 'D:\\myVideo\\',
-         "safebrowsing_for_trusted_sources_enabled": False,
-        "safebrowsing.enabled": False
+         'download.default_directory': path,
+         'safebrowsing_for_trusted_sources_enabled': False,
+        'safebrowsing.enabled': False
          }
 chrome_options.add_experimental_option('prefs', prefs)
 # 实例化一款浏览器
